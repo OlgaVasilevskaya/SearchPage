@@ -1,2 +1,2 @@
-import "bootstrap/js/dist/tab";
-import "bootstrap/js/dist/collapse";
+require("bootstrap/js/dist/tab");
+require("bootstrap/js/dist/collapse");
