@@ -115,3 +115,9 @@ const apiRequestCity = () => {
      })
      .catch(error => console.log('error in getting city', error));
 };
+
+//localStorage
+
+let test = 'Some information';
+
+localStorage.setItem('test', test);
