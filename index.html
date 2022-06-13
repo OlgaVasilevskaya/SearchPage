@@ -27,9 +27,15 @@
             <label for="inputEndDate" class="form-label">End Date</label>
             <input type="date" class="form-control" id="inputEndDate" placeholder="mm/dd/yyyy">
           </div>
-          <div class="col-12">
-            <label for="inputFrom" class="form-label">From</label>
-            <input type="text" class="form-control" id="inputFrom">
+          <div class="form-group">
+            <label for="inputLocationCity">From</label>
+            <select class="form-control" id="selectLocationCountry">
+              <!-- <option id="optionLocationCountry"></option> -->
+            </select>
+            <br>
+            <select class="form-control" id="selectLocationCity">
+              <option id="optionLocationCity"></option>
+            </select>
           </div>
           <div class="col-12">
             <label for="inputTo" class="form-label">To</label>
@@ -56,16 +62,9 @@
             <label for="inputAmenities" class="form-label">Amenities</label>
             <input type="text" class="form-control" id="inputAmenities">
           </div>
-          <div class="col-6">
-            <label for="inputLocation" class="form-label">Country</label>
+          <div class="col-12">
+            <label for="inputLocation" class="form-label">Location</label>
             <input type="text" class="form-control" id="inputLocationCountry">
-          </div>
-          <div class="col-6">
-            <label for="inputLocation" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputLocationCity">
-            <select name="city" id="city">
-              <option value=""></option>
-            </select>
           </div>
           <div class="col-12">
             <button type="button" class="btn btn-primary" id ="clear">Clear</button>
@@ -88,19 +87,9 @@
             <label for="inputType" class="form-label">Type</label>
             <input type="text" class="form-control" id="inputType" placeholder="Economy">
           </div>
-          <div class="col-6">
-            <label for="inputLocation" class="form-label">Country</label>
-            <!-- <input type="text" class="form-control" id="inputLocationCountry"> -->
-            <select name="" id="selectLocationCountry">
-              <!-- <option value=""></option> -->
-            </select>
-          </div>
-          <div class="col-6">
-            <label for="inputLocation" class="form-label">City</label>
-            <!-- <input type="text" class="form-control" id="inputLocationCity"> -->
-              <select name="" id="selectLocationCity">
-                <option value="option" id="optionLocationCity"></option>
-              </select>
+          <div class="col-12">
+            <label for="inputLocation" class="form-label">Location</label>
+            <input type="text" class="form-control" id="inputLocationCountry">
           </div>
           <div class="col-12">
             <button type="button" class="btn btn-primary" id ="clear">Clear</button>

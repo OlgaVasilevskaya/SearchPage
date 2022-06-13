@@ -1,3 +1,5 @@
+//Form validation
+
 let today = new Date();
 
 let date = today.getDate();
@@ -46,14 +48,49 @@ document.addEventListener("DOMContentLoaded",()=>{
     });
 
     clearBtn.addEventListener("click", () => {
-      formNode.reset();
+      document.querySelector('#inputStartDate').value = '';
+      document.querySelector('#inputEndDate').value = '';
+      document.querySelector('#selectLocationCountry').value = '';
+      document.querySelector('#selectLocationCity').value = '';
+      document.querySelector('#inputTo').value = '';
     });
   });
 });
 
+//Request Country
+
+document.querySelector("#selectLocationCountry").addEventListener("click", () => {
+  apiRequestCountry();
+});
+
+const apiRequestCountry = () => {
+  document.querySelector("#selectLocationCountry").text = "";
+
+  const url = 'https://namaztimes.kz/ru/api/country?type=json';
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw Error(response.statusText);
+
+      return response.json();
+    })
+    .then(data => {
+        console.log('data', data);
+        const country = document.createElement("option");
+        country.className = "optionLocationCountry";
+
+        console.log('country', country);
+        country.text = data['99'];
+
+        document.querySelector("#selectLocationCountry").appendChild(country);
+    })
+    .catch(error => console.log('error in getting country', error));
+};
+
+//Request City
 
 document.querySelector("#selectLocationCity").addEventListener("click", () => {
-    apiRequestCity();
+  apiRequestCity();
 });
 
 const apiRequestCity = () => {
@@ -67,20 +104,14 @@ const apiRequestCity = () => {
 
       return response.json();
      })
-     .then(data => {
-        console.log('data', data);
-        loadCity(data);
+    .then(data => {
+      console.log('data', data);
+      const city = document.querySelector("#optionLocationCity");
+
+      console.log('city', city);
+      city.text = data['8408'];
+
+      document.querySelector("#selectLocationCity").appendChild(city);
      })
      .catch(error => console.log('error in getting city', error));
-};
-
-const loadCity = (data) => {
-  for(let i = 0; i < data.results; i++){
-    const city = document.querySelector("#optionLocationCity");
-    // console.log('city_in', city);
-    // city.text = 'some text';
-    city.text = `url(${data.results[i]})`;
-
-    document.querySelector("#optionLocationCity").appendChild(city);
-  }
 };
