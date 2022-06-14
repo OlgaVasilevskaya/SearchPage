@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       document.querySelector('#inputEndDate').value = '';
       document.querySelector('#selectLocationCountry').value = '';
       document.querySelector('#selectLocationCity').value = '';
-      document.querySelector('#inputTo').value = '';
+      document.querySelector('#selectLocationCity').value = '';
     });
   });
 });
@@ -75,14 +75,17 @@ const apiRequestCountry = () => {
       return response.json();
     })
     .then(data => {
-        console.log('data', data);
+      console.log('data', data);
+
+      const arr = Object.values(data);
+
+      for(let i = 1; i < arr.length; i++) {
         const country = document.createElement("option");
         country.className = "optionLocationCountry";
-
         console.log('country', country);
-        country.text = data['99'];
-
+        country.text = data[i];
         document.querySelector("#selectLocationCountry").appendChild(country);
+      }
     })
     .catch(error => console.log('error in getting country', error));
 };
@@ -94,26 +97,31 @@ document.querySelector("#selectLocationCity").addEventListener("click", () => {
 });
 
 const apiRequestCity = () => {
-  document.querySelector("#optionLocationCity").text = "";
+  document.querySelector("#selectLocationCity").text = "";
 
-  const url = 'https://namaztimes.kz/ru/api/cities?id=almaty&type=json';
+  const url = 'https://namaztimes.kz/ru/api/country?type=json';
 
   fetch(url)
     .then(response => {
       if (!response.ok) throw Error(response.statusText);
 
       return response.json();
-     })
+    })
     .then(data => {
       console.log('data', data);
-      const city = document.querySelector("#optionLocationCity");
 
-      console.log('city', city);
-      city.text = data['8408'];
+      const arrCity = Object.values(data);
+      console.log('arrcity', arrCity.length);
 
-      document.querySelector("#selectLocationCity").appendChild(city);
-     })
-     .catch(error => console.log('error in getting city', error));
+      for(let i = 1; i < arrCity.length; i++) {
+        const city = document.createElement("option");
+        city.className = "optionLocationCity";
+        console.log('city', city);
+        city.text = data[i];
+        document.querySelector("#selectLocationCity").appendChild(city);
+      }
+    })
+    .catch(error => console.log('error in getting city', error));
 };
 
 //localStorage
