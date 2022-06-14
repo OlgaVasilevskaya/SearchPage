@@ -52,7 +52,6 @@ document.addEventListener("DOMContentLoaded",()=>{
       document.querySelector('#inputEndDate').value = '';
       document.querySelector('#selectLocationCountry').value = '';
       document.querySelector('#selectLocationCity').value = '';
-      document.querySelector('#selectLocationCity').value = '';
     });
   });
 });
@@ -119,6 +118,10 @@ const apiRequestCity = () => {
         console.log('city', city);
         city.text = data[i];
         document.querySelector("#selectLocationCity").appendChild(city);
+
+        // console.log(arrCity[1], 'latestCity');
+        // let cityHistory = arrCity[1];
+        // localStorage.setItem('cityHistory', cityHistory);
       }
     })
     .catch(error => console.log('error in getting city', error));
