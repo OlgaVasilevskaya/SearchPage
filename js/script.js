@@ -83,6 +83,7 @@ const apiRequestCountry = () => {
         country.className = "optionLocationCountry";
         console.log('country', country);
         country.text = data[i];
+
         document.querySelector("#selectLocationCountry").appendChild(country);
       }
     })
@@ -117,11 +118,8 @@ const apiRequestCity = () => {
         city.className = "optionLocationCity";
         console.log('city', city);
         city.text = data[i];
-        document.querySelector("#selectLocationCity").appendChild(city);
 
-        // console.log(arrCity[1], 'latestCity');
-        // let cityHistory = arrCity[1];
-        // localStorage.setItem('cityHistory', cityHistory);
+        document.querySelector("#selectLocationCity").appendChild(city);
       }
     })
     .catch(error => console.log('error in getting city', error));
@@ -129,6 +127,17 @@ const apiRequestCity = () => {
 
 //localStorage
 
-let test = 'Some information';
+function dataSelect(f) {
+  let n = f.selectLocationCountry.selectedIndex;
+  let a = f.selectLocationCity.selectedIndex;
 
-localStorage.setItem('test', test);
+  if(n) {
+    let countryHistory = f.selectLocationCountry.options[n].value;
+    localStorage.setItem('countryHistory', countryHistory); 
+  }
+
+  if(a) {
+    let cityHistory = f.selectLocationCity.options[a].value;
+    localStorage.setItem('cityHistory', cityHistory); 
+  }
+}
