@@ -1,3 +1,4 @@
+import "../css/styles.css";
 //Form validation
 
 let today = new Date();
