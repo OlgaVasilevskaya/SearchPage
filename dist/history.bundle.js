@@ -1,1 +1,0 @@
-document.querySelector("#item-text-from").textContent=localStorage.getItem("countryHistory"),document.querySelector("#item-text-to").textContent=localStorage.getItem("cityHistory"),document.querySelector("#item-close").addEventListener("click",(()=>{document.querySelector("#items").textContent=""}));
